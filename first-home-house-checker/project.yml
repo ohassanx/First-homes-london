@@ -1,0 +1,17 @@
+packages:
+  - name: monitor # Functions package name
+    functions:
+      - name: check # Function name inside package
+        runtime: python:3.9
+        web: false # Not exposed as web function
+        triggers:
+          - name: check-every-1-hour
+            sourceType: scheduler
+            sourceDetails:
+              cron: "0 */2 * * *" # Every 6 hours
+              withBody: {}
+
+
+environment:
+  BOT_TOKEN: ${BOT_TOKEN}
+  CHAT_ID: ${CHAT_ID}
